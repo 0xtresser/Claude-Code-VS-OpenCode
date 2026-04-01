@@ -1,0 +1,25 @@
+[book]
+title = "Claude Code VS OpenCode: Architecture, Design & The Road Ahead"
+authors = ["0xTresser"]
+description = "An in-depth multi-dimensional analysis comparing OpenCode, Oh-My-OpenCode, and Claude Code"
+language = "en"
+src = "../../EN"
+
+[build]
+build-dir = "../build/en"
+
+[output.html]
+default-theme = "navy"
+preferred-dark-theme = "navy"
+git-repository-url = "https://github.com/0xtresser/Claude-Code-VS-OpenCode"
+edit-url-template = "https://github.com/0xtresser/Claude-Code-VS-OpenCode/edit/main/EN/{path}"
+site-url = "/Claude-Code-VS-OpenCode/en/"
+additional-css = ["../theme/custom.css"]
+
+[output.html.fold]
+enable = true
+level = 1
+
+[output.html.search]
+enable = true
+limit-results = 30

@@ -1,0 +1,25 @@
+[book]
+title = "Claude Code VS OpenCode：架构、设计与未来"
+authors = ["0xTresser"]
+description = "深度分析和对比 OpenCode、Oh-My-OpenCode 和 Claude Code 三大 AI 编码智能体系统"
+language = "zh"
+src = "../../ZH"
+
+[build]
+build-dir = "../build/zh"
+
+[output.html]
+default-theme = "navy"
+preferred-dark-theme = "navy"
+git-repository-url = "https://github.com/0xtresser/Claude-Code-VS-OpenCode"
+edit-url-template = "https://github.com/0xtresser/Claude-Code-VS-OpenCode/edit/main/ZH/{path}"
+site-url = "/Claude-Code-VS-OpenCode/zh/"
+additional-css = ["../theme/custom.css"]
+
+[output.html.fold]
+enable = true
+level = 1
+
+[output.html.search]
+enable = true
+limit-results = 30
