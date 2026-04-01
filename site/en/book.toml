@@ -9,7 +9,7 @@ src = "../../EN"
 build-dir = "../build/en"
 
 [output.html]
-default-theme = "navy"
+default-theme = "light"
 preferred-dark-theme = "navy"
 git-repository-url = "https://github.com/0xtresser/Claude-Code-VS-OpenCode"
 edit-url-template = "https://github.com/0xtresser/Claude-Code-VS-OpenCode/edit/main/EN/{path}"
