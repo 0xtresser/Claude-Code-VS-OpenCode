@@ -1,7 +1,7 @@
 > Model: openai/gpt-5.4
 > Token Usage (estimated): ~7,200 tokens
 > Generated: 2026-04-01
-> Book: AI Coding Agents: Architecture, Design & The Road Ahead
+> Book: Claude Code VS OpenCode: Architecture, Design & The Road Ahead
 
 # Appendix A: Tool Inventory Across OpenCode, OMO, and Claude Code
 

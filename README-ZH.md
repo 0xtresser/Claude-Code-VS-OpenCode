@@ -1,4 +1,4 @@
-# 《AI编码智能体：架构、设计与未来》— 全书目录
+# 《Claude Code VS OpenCode：架构、设计与未来》— 全书目录
 
 > **模型**: claude-opus-4-6 (anthropic/claude-opus-4-6)
 > **Token消耗**: ~45,000 输入 + ~8,000 输出（目录生成）

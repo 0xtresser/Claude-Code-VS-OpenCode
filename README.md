@@ -1,4 +1,4 @@
-# *AI Coding Agents: Architecture, Design & The Road Ahead* — Table of Contents
+# *Claude Code VS OpenCode: Architecture, Design & The Road Ahead* — Table of Contents
 
 > **Model**: claude-opus-4-6 (anthropic/claude-opus-4-6)
 > **Token Usage**: ~45,000 input + ~8,000 output (TOC generation)
@@ -14,7 +14,7 @@
 
 ## Book Structure Overview
 
-This book provides an in-depth multi-dimensional analysis comparing three AI coding agent systems — **OpenCode** (open-source foundation), **Oh-My-OpenCode** (multi-agent orchestration layer), and **Claude Code** (Anthropic's commercial agent) — from shared architectural patterns to distinctive innovations, culminating in best practices for agent design.
+This book — *Claude Code VS OpenCode* — provides an in-depth multi-dimensional analysis comparing three AI coding agent systems — **OpenCode** (open-source foundation), **Oh-My-OpenCode** (multi-agent orchestration layer), and **Claude Code** (Anthropic's commercial agent) — from shared architectural patterns to distinctive innovations, culminating in best practices for agent design.
 
 | Part | Chapter Range | Core Topics | Est. Word Count |
 |------|--------------|-------------|-----------------|
