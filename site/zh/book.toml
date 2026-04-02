@@ -15,6 +15,7 @@ git-repository-url = "https://github.com/0xtresser/Claude-Code-VS-OpenCode"
 edit-url-template = "https://github.com/0xtresser/Claude-Code-VS-OpenCode/edit/main/ZH/{path}"
 site-url = "/Claude-Code-VS-OpenCode/zh/"
 additional-css = ["../theme/custom.css"]
+additional-js = ["../theme/mermaid.min.js", "../theme/mermaid-init.js"]
 
 [output.html.fold]
 enable = true
