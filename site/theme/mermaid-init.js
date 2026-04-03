@@ -1,4 +1,8 @@
-function initMermaid() {
+// Mermaid diagram renderer for mdBook
+// Works with locally bundled mermaid.min.js (no CDN dependency)
+(function () {
+  if (typeof mermaid === 'undefined') return;
+
   var theme = document.documentElement.className.includes('light') ? 'default' : 'dark';
   mermaid.initialize({
     startOnLoad: false,
@@ -6,37 +10,59 @@ function initMermaid() {
     securityLevel: 'loose',
     flowchart: { useMaxWidth: true, htmlLabels: true, curve: 'basis' },
     sequence: { useMaxWidth: true },
-    themeVariables: {
-      fontSize: '14px'
-    }
+    themeVariables: { fontSize: '14px' }
   });
 
-  function renderDiagrams() {
+  function renderMermaid() {
     var blocks = document.querySelectorAll('pre > code.language-mermaid');
-    blocks.forEach(function(block, i) {
-      var container = block.parentElement;
-      var id = 'mermaid-' + i + '-' + Date.now();
-      var svg = document.createElement('div');
-      svg.className = 'mermaid';
-      svg.textContent = block.textContent;
-      container.parentElement.replaceChild(svg, container);
+    if (blocks.length === 0) return;
+
+    blocks.forEach(function (block) {
+      var pre = block.parentElement;
+      // Skip if already processed
+      if (pre.getAttribute('data-mermaid-processed')) return;
+      pre.setAttribute('data-mermaid-processed', 'true');
+
+      var div = document.createElement('div');
+      div.className = 'mermaid';
+      div.textContent = block.textContent;
+      pre.parentElement.replaceChild(div, pre);
     });
-    mermaid.run();
+
+    // mermaid v11 API
+    try {
+      mermaid.run({ querySelector: '.mermaid:not([data-processed])' });
+    } catch (e) {
+      // fallback for older API
+      try { mermaid.run(); } catch (e2) { console.warn('Mermaid render failed:', e2); }
+    }
   }
 
-  if (document.readyState === 'complete') {
-    renderDiagrams();
+  // Initial render
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', renderMermaid);
   } else {
-    window.addEventListener('load', renderDiagrams);
+    renderMermaid();
   }
 
-  var observer = new MutationObserver(function(mutations) {
-    mutations.forEach(function(m) {
-      if (m.addedNodes.length) renderDiagrams();
-    });
+  // Re-render on mdBook SPA navigation
+  var observer = new MutationObserver(function () {
+    setTimeout(renderMermaid, 50);
   });
   var content = document.getElementById('content');
-  if (content) observer.observe(content, { childList: true, subtree: true });
-}
+  if (content) {
+    observer.observe(content, { childList: true, subtree: true });
+  }
 
-if (typeof mermaid !== 'undefined') initMermaid();
+  // Re-render on theme change
+  var themeObserver = new MutationObserver(function () {
+    var newTheme = document.documentElement.className.includes('light') ? 'default' : 'dark';
+    mermaid.initialize({ theme: newTheme });
+    // Re-process all diagrams
+    document.querySelectorAll('[data-mermaid-processed]').forEach(function (el) {
+      el.removeAttribute('data-mermaid-processed');
+    });
+    renderMermaid();
+  });
+  themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+})();
